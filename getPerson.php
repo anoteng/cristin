@@ -70,6 +70,8 @@ foreach ($personDetails as $person) {
         $institutionDetails[$institutionID] = json_decode($responseInstitutionDetails, true);
     }
 }
+echo "****<br />";
 var_dump($institutionDetails);
+echo "****<br />";
 // Return JSON data with filtered and enriched persons
 echo json_encode($personDetails);
