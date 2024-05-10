@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Definer API-URL og API-nøkkel
 $apiUrl = 'https://api.cristin.no/v2/persons';
 
@@ -22,22 +24,16 @@ curl_close($ch);
 // Dekod JSON-respons
 $data = json_decode($response, true);
 
-// Sjekk for feil
-if ($data['error']) {
-    echo json_encode(['error' => $data['error']['message']]);
-    exit;
-}
-
 // Filtrer personer basert på søketerm
 $filteredPersons = [];
-foreach ($data['items'] as $person) {
-    $name = strtolower($person['name']['full']);
+foreach ($data as $person) {
+    $name = strtolower($person['surname']. ", ". $person['first_name']);
     if (strpos($name, $searchTerm) !== false) {
         $filteredPersons[] = [
-            'navn' => $person['name']['full'],
-            'arbeidssted' => $person['organisations'][0]['name'],
-            'stillingstittel' => $person['positions'][0]['title'],
-            'id' => $person['id'],
+            'navn' => $name,
+//            'arbeidssted' => $person['organisations'][0]['name'],
+//            'stillingstittel' => $person['positions'][0]['title'],
+            'id' => $person['cristin_person_id'],
         ];
     }
 }
