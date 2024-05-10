@@ -21,7 +21,7 @@
       <div class="col-md-9">
         <h1>Hent data og statistikk fra Cristin</h1>
         <p>Legg til personer du vil hente dato om under</p>
-          <p><label for="searchBox">Personnavn:</label><input type="text" id="searchBox"></p>
+          <p><label for="searchBox">Personnavn: </label><input type="text" id="searchBox"></p>
           <p><ul id="resultsList"></ul></p>
       </div>
     </div>
