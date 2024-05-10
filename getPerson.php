@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 
 // Define API URLs
 $apiUrlPersons = 'https://api.cristin.no/v2/persons';
-$apiUrlPersonDetails = 'https://api.cristin.no/v2/person/';
 
 // Fetch search term from GET parameter
 $searchTerm = strtolower($_GET['q']);
@@ -39,14 +38,14 @@ $personDetails = [];
 foreach ($filteredPersons as $person) {
     $personID = $person['cristin_person_id'];
 
-    $urlPersonDetails = $apiUrlPersonDetails . $personID;
+    $urlPersonDetails = $apiUrlPersons ."/". $personID;
     $chPersonDetails = curl_init($urlPersonDetails);
     curl_setopt($chPersonDetails, CURLOPT_RETURNTRANSFER, true);
     $responsePersonDetails = curl_exec($chPersonDetails);
     curl_close($chPersonDetails);
 
     $personDetailsData = json_decode($responsePersonDetails, true);
-
+    var_dump($personDetailsData);
     // Extract relevant person details
     $personDetails[] = array_merge($person, [
         'arbeidssted' => $personDetailsData['organisations'][0]['name'] ?? '',
