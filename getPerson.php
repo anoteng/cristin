@@ -8,7 +8,7 @@ $apiUrl = 'https://api.cristin.no/v2/persons';
 $searchTerm = strtolower($_GET['q']);
 
 // Konstruer API-forespørsel
-$url = $apiUrl . '?query=' . urlencode($searchTerm);
+$url = $apiUrl . '?name=' . urlencode($searchTerm);
 
 
 
