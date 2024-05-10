@@ -80,7 +80,8 @@ foreach ($filteredPersons as $person) {
 //    ]);
 }
 
-
+echo("<p>****");
 var_dump($personDetails);
+echo("****</p>");
 // Return JSON data with filtered and enriched persons
 echo json_encode($personDetails);
