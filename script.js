@@ -24,7 +24,9 @@ document.getElementById('showPublicationsButton').addEventListener('click', asyn
     }
 });
 searchBox.addEventListener('input', () => {
-    const searchTerm = searchBox.value.toLowerCase().replace(/%20/g, "+");
+    let searchTerm = decodeURIComponent(searchBox.value.toLowerCase());
+    searchTerm = searchTerm.replace(/ /g, "+");
+    console.log(searchTerm);
     // Debounce the fetch operation using a timeout
     if (timeoutId) {
         clearTimeout(timeoutId); // Clear any existing timeout

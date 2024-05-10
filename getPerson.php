@@ -32,11 +32,12 @@ class InstitutionLookup {
 }
 $institutionLookup = new InstitutionLookup();
 // Fetch search term from GET parameter
-$searchTerm = strtolower($_GET['q']);
+$searchTerm = preg_replace('/\s+/', '+', strtolower($_GET['q']));
+//echo $searchTerm;
 
 // Construct API request for initial search
-$urlPersons = $apiUrlPersons . '?name=' . urlencode($searchTerm);
-
+$urlPersons = $apiUrlPersons . '?name=' . $searchTerm;
+//echo $urlPersons;
 // Execute cURL request for initial search
 $chPersons = curl_init($urlPersons);
 curl_setopt($chPersons, CURLOPT_RETURNTRANSFER, true);
@@ -45,17 +46,15 @@ curl_close($chPersons);
 
 // Decode JSON response for initial search
 $dataPersons = json_decode($responsePersons, true);
-
+//var_dump($dataPersons[0]);
 // Filter persons based on search term
 $filteredPersons = [];
 foreach ($dataPersons as $person) {
     $name = strtolower($person['surname'] . ", " . $person['first_name']);
-    if (strpos($name, $searchTerm) !== false) {
-        $filteredPersons[] = [
-            'navn' => $name,
-            'cristin_person_id' => $person['cristin_person_id'],
-        ];
-    }
+    $filteredPersons[] = [
+        'navn' => $name,
+        'cristin_person_id' => $person['cristin_person_id'],
+    ];
 }
 
 // Fetch additional person details using CRISTIN person IDs
