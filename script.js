@@ -8,6 +8,21 @@ function leggTilPerson(personId) {
     addedPersonIds.push(personId); // Legg til person-ID i listen
     // Oppdater grensesnittet for å vise den lagt til personen
 }
+document.getElementById('showPublicationsButton').addEventListener('click', async () => {
+
+    // Send separate spørringer for hver person
+    for (const personId of addedPersonIds) {
+        try {
+            const response = await fetch(`getPublications?id=${personId}`);
+            const data = await response.json();
+
+            // Behandle dataene (for eksempel oppdater grensesnittet)
+            console.log(`Publikasjoner for person ${personId}:`, data);
+        } catch (error) {
+            console.error('Feil ved henting av publikasjoner:', error);
+        }
+    }
+});
 searchBox.addEventListener('input', () => {
     const searchTerm = searchBox.value.toLowerCase();
     // Debounce the fetch operation using a timeout
