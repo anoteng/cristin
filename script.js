@@ -3,6 +3,11 @@ const resultsList = document.getElementById('resultsList');
 const addedPersons = document.getElementById('addedPersons');
 
 let timeoutId = null; // Variable to store the timeout ID
+const addedPersonIds = []; // Opprett en tom liste for å lagre person-ID-ene
+function leggTilPerson(personId) {
+    addedPersonIds.push(personId); // Legg til person-ID i listen
+    // Oppdater grensesnittet for å vise den lagt til personen
+}
 searchBox.addEventListener('input', () => {
     const searchTerm = searchBox.value.toLowerCase();
     // Debounce the fetch operation using a timeout
@@ -33,6 +38,7 @@ searchBox.addEventListener('input', () => {
                             addButton.addEventListener('click', () => {
                                 const addedPerson = document.createElement('li');
                                 addedPerson.textContent = person.navn;
+                                leggTilPerson(person.cristin_person_id);
 
                                 const removeButton = document.createElement('button');
                                 removeButton.textContent = 'Fjern';
@@ -58,3 +64,16 @@ searchBox.addEventListener('input', () => {
         }
     }, 500); // Debounce delay (in milliseconds)
 });
+function visPublikasjoner(personId) {
+    // Her kan du implementere koden for å hente publikasjonsdata basert på personId
+    // For eksempel:
+    fetch(`getPublications.php?id=${personId}&after_year=2019`)
+        .then(response => response.json())
+        .then(publications => {
+            // Vis publikasjonsdata i et passende format (f.eks. en liste)
+            console.log(publications);
+        })
+        .catch(error => {
+            console.error('Feil ved henting av publikasjoner:', error);
+        });
+}

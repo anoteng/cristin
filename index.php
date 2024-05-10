@@ -14,7 +14,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Hjem</a>
                 <a class="nav-link" href="#">Om oss</a>
                 <a class="nav-link" href="#">Tjenester</a>
-                <a class="nav-link" href="#">Kontakt</a>
+                <a class="nav-link" href="#" onclick="visPublikasjoner(personId)">Vis publikasjoner</a>
                 <ul id="addedPersons"></ul>
             </nav>
         </div>
