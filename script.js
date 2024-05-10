@@ -1,5 +1,6 @@
 const searchBox = document.getElementById('searchBox');
 const resultsList = document.getElementById('resultsList');
+const addedPersons = document.getElementById('addedPersons');
 
 let timeoutId = null; // Variable to store the timeout ID
 searchBox.addEventListener('input', () => {
@@ -26,6 +27,24 @@ searchBox.addEventListener('input', () => {
                                 subListItem.textContent = `${affiliation.institution} (${affiliation.position})`;
                                 listItem.appendChild(subListItem);
                             });
+
+                            const addButton = document.createElement('button');
+                            addButton.textContent = 'Legg til';
+                            addButton.addEventListener('click', () => {
+                                const addedPerson = document.createElement('li');
+                                addedPerson.textContent = person.navn;
+
+                                const removeButton = document.createElement('button');
+                                removeButton.textContent = 'Fjern';
+                                removeButton.addEventListener('click', () => {
+                                    addedPersons.removeChild(addedPerson);
+                                });
+
+                                addedPerson.appendChild(removeButton);
+                                addedPersons.appendChild(addedPerson);
+                            });
+
+                            listItem.appendChild(addButton);
                         });
                     } else {
                         resultsList.innerHTML = '<li>Ingen resultater funnet</li>';
