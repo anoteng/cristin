@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 // Define API URLs
 $apiUrlPersons = 'https://api.cristin.no/v2/persons';
+$apiUrlInstitutions = 'https://api.cristin.no/v2/institutions';
 
 // Fetch search term from GET parameter
 $searchTerm = strtolower($_GET['q']);
@@ -46,12 +47,28 @@ foreach ($filteredPersons as $person) {
 
     $personDetailsData = json_decode($responsePersonDetails, true);
     var_dump($personDetailsData);
-    // Extract relevant person details
-    $personDetails[] = array_merge($person, [
-        'arbeidssted' => $personDetailsData['organisations'][0]['name'] ?? '',
-        'stillingstittel' => $personDetailsData['positions'][0]['title'] ?? '',
-    ]);
+    $personDetails[] = json_decode($responsePersonDetails, true);
+//    // Extract relevant person details
+//    $personDetails[] = array_merge($person, [
+//        'arbeidssted' => $personDetailsData['organisations'][0]['name'] ?? '',
+//        'stillingstittel' => $personDetailsData['positions'][0]['title'] ?? '',
+//    ]);
 }
+// Fetch institution details using CRISTIN institution IDs
+$institutionDetails = [];
+foreach ($personDetails as $person) {
+    $institutionID = $person['institution_id']; // Assuming the institution ID is available in the person details
 
+    // Check if we already have the institution details
+    if (!array_key_exists($institutionID, $institutionDetails)) {
+        $urlInstitutionDetails = $apiUrlInstitutions ."/". $institutionID;
+        $chInstitutionDetails = curl_init($urlInstitutionDetails);
+        curl_setopt($chInstitutionDetails, CURLOPT_RETURNTRANSFER, true);
+        $responseInstitutionDetails = curl_exec($chInstitutionDetails);
+        curl_close($chInstitutionDetails);
+
+        $institutionDetails[$institutionID] = json_decode($responseInstitutionDetails, true);
+    }
+}
 // Return JSON data with filtered and enriched persons
 echo json_encode($personDetails);
