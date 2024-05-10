@@ -14,7 +14,7 @@ document.getElementById('showPublicationsButton').addEventListener('click', asyn
     for (const personId of addedPersonIds) {
         try {
             const response = await fetch(`getPublications.php?id=${personId}`);
-            const data = await response.json();
+            const data = await response.text();
 
             // Behandle dataene (for eksempel oppdater grensesnittet)
             console.log(`Publikasjoner for person ${personId}:`, data);

@@ -19,7 +19,7 @@
             </nav>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9" id="mainBox">
             <h1>Hent data og statistikk fra Cristin</h1>
             <p>Legg til personer du vil hente dato om under</p>
             <p><label for="searchBox">Personnavn: </label><input type="text" id="searchBox"></p>
