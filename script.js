@@ -18,8 +18,14 @@ searchBox.addEventListener('input', () => {
                     if (data.length > 0) {
                         data.forEach(person => {
                             const listItem = document.createElement('li');
-                            listItem.textContent = `${person.navn} - ${person.arbeidssted} (${person.stillingstittel})`;
+                            listItem.textContent = person.navn;
                             resultsList.appendChild(listItem);
+
+                            person.affiliations.forEach(affiliation => {
+                                const subListItem = document.createElement('ul');
+                                subListItem.textContent = `${affiliation.institution} (${affiliation.position})`;
+                                listItem.appendChild(subListItem);
+                            });
                         });
                     } else {
                         resultsList.innerHTML = '<li>Ingen resultater funnet</li>';
@@ -32,5 +38,4 @@ searchBox.addEventListener('input', () => {
             resultsList.innerHTML = '';
         }
     }, 500); // Debounce delay (in milliseconds)
-
 });
