@@ -15,7 +15,7 @@ class InstitutionLookup {
             return $this->institutionNames[$institutionID];
         } else {
             $institutionDetails = $this->fetchInstitutionDetails($institutionID);
-            $this->institutionNames[$institutionID] = $institutionDetails['institution_name']['nb'];
+            $this->institutionNames[$institutionID] = $institutionDetails['institution_name']['en'];
             return $this->institutionNames[$institutionID];
         }
     }

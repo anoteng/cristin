@@ -13,7 +13,7 @@ document.getElementById('showPublicationsButton').addEventListener('click', asyn
     // Send separate spørringer for hver person
     for (const personId of addedPersonIds) {
         try {
-            const response = await fetch(`getPublications?id=${personId}`);
+            const response = await fetch(`getPublications.php?id=${personId}`);
             const data = await response.json();
 
             // Behandle dataene (for eksempel oppdater grensesnittet)
