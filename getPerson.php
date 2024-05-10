@@ -71,17 +71,21 @@ foreach ($filteredPersons as $person) {
 
     $personDetailsData = json_decode($responsePersonDetails, true);
 
-    $personDetails[] = json_decode($responsePersonDetails, true);
+    // Extract relevant person details
+    $affiliations = [];
+    foreach ($personDetailsData['affiliations'] as $affiliation) {
+        $affiliations[] = [
+            'institution' => $institutionLookup->getInstitutionName($affiliation['institution']['cristin_institution_id']),
+            'position' => $affiliation['position']['en'] ?? '',
+        ];
+    }
 
-//    // Extract relevant person details
-//    $personDetails[] = array_merge($person, [
-//        'arbeidssted' => $personDetailsData['organisations'][0]['name'] ?? '',
-//        'stillingstittel' => $personDetailsData['positions'][0]['title'] ?? '',
-//    ]);
+    $personDetails[] = [
+        'navn' => $personDetailsData['first_name'] . ' ' . $personDetailsData['surname'],
+        'cristin_person_id' => $personDetailsData['cristin_person_id'],
+        'affiliations' => $affiliations,
+    ];
 }
 
-echo("<p>****");
-var_dump($personDetails);
-echo("****</p>");
 // Return JSON data with filtered and enriched persons
 echo json_encode($personDetails);
