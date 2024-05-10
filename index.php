@@ -19,12 +19,15 @@
       </div>
 
       <div class="col-md-9">
-        <h1>Hovedinnhold</h1>
-        <p>Dette er et eksempel på en Bootstrap venstremeny mal. Du kan tilpasse denne malen for å passe dine behov ved å legge til ditt eget innhold og stiler.</p>
+        <h1>Hent data og statistikk fra Cristin</h1>
+        <p>Legg til personer du vil hente dato om under</p>
+          <p><label for="searchBox">Personnavn:</label><input type="text" id="searchBox"></p>
+          <p><ul id="resultsList"></ul></p>
       </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+<script src="script.js"></script>
 </html>
