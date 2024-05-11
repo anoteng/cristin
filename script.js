@@ -30,7 +30,7 @@ mainBox.innerHTML = "";
     }
 });
 searchBox.addEventListener('input', () => {
-    let searchTerm = decodeURIComponent(searchBox.value.toLowerCase());
+    let searchTerm = searchBox.value.toLowerCase();
     searchTerm = searchTerm.replace(/ /g, "+");
     console.log(searchTerm);
     // Debounce the fetch operation using a timeout
