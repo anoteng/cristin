@@ -3,10 +3,9 @@ const resultsList = document.getElementById('resultsList');
 const addedPersons = document.getElementById('addedPersons');
 
 let timeoutId = null; // Variable to store the timeout ID
-const addedPersonIds = []; // Opprett en tom liste for å lagre person-ID-ene
-function leggTilPerson(personId) {
-    addedPersonIds.push(personId); // Legg til person-ID i listen
-    // Oppdater grensesnittet for å vise den lagt til personen
+const addedPersonIds = {}; // Opprett en tom liste for å lagre person-ID-ene
+function leggTilPerson(personId, navn) {
+    addedPersonIds[personId] = navn;
 }
 document.getElementById('showPublicationsButton').addEventListener('click', async () => {
 
@@ -16,7 +15,6 @@ document.getElementById('showPublicationsButton').addEventListener('click', asyn
             const response = await fetch(`getPublications.php?id=${personId}`);
             const data = await response.text();
 
-            // Behandle dataene (for eksempel oppdater grensesnittet)
             console.log(`Publikasjoner for person ${personId}:`, data);
         } catch (error) {
             console.error('Feil ved henting av publikasjoner:', error);

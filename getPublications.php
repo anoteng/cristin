@@ -12,17 +12,17 @@ $result = curl_exec($ch);
 curl_close($ch);
 $obj = json_decode($result, true);
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Uttak fra Cristin</title>
-<style>
-table, th, td {
-  border: 1px solid;
-}
-</style>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<title>Uttak fra Cristin</title>-->
+<!--<style>-->
+<!--table, th, td {-->
+<!--  border: 1px solid;-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
 <table>
 <tr>
 	<th>Tittel</th>
@@ -59,5 +59,6 @@ foreach($obj as $i){
 	}
 }
 ?>
-</body>
-</html>
+</table>
+<!--</body>-->
+<!--</html>-->
