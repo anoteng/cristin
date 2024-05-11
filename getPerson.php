@@ -32,7 +32,7 @@ class InstitutionLookup {
 }
 $institutionLookup = new InstitutionLookup();
 // Fetch search term from GET parameter
-$searchTerm = preg_replace('/\s+/', '+', strtolower($_GET['q']));
+$searchTerm = preg_replace('/\s+/', '+', urldecode(strtolower($_GET['q'])));
 //echo $searchTerm;
 
 // Construct API request for initial search
