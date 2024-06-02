@@ -23,7 +23,8 @@ mainBox.innerHTML = "";
             const h1 = document.createElement('h1');
             h1.innerText = idToPerson[personId]
             p.innerHTML = p.innerHTML + data;
-            mainBox.innerHTML = mainBox.innerHTML + p
+            console.log(data)
+            mainBox.innerHTML += p
         } catch (error) {
             console.error('Feil ved henting av publikasjoner:', error);
         }
