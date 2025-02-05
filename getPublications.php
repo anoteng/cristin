@@ -4,8 +4,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 $url = "https://api.cristin.no/v2/persons/". $_GET["id"] ."/results";
 $year = $_GET["after_year"];
-if(isset($_GET[AACSB])){
-	$AACSB = $_GET[AACSB];
+if(isset($_GET['AACSB'])){
+	$AACSB = $_GET['AACSB'];
 }else{
 	$AACSB = false;
 }
