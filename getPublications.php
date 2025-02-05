@@ -40,7 +40,7 @@ if($AACSB){
 	$encyclopaedia = 0;
 	$reference = 0;
 	$compendium = 0;
-	$article_popular = 0;
+	$articlepopular = 0;
 	$feature = 0;
 	$lecturepopular = 0;
 	$report = 0;
