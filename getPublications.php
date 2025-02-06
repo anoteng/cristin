@@ -53,9 +53,8 @@ table, th, td {
 			}
 		}
 	}
-
 // Skriv ut antall publikasjoner med nvi_level 1 eller 2
-echo "Antall publikasjoner med NVI-nivå 1 eller 2: " . $nvi_count;
+echo "Antall publikasjoner med NVI-nivå 1 eller 2 i perioden: " . $nvi_count;
 ?>
 </p>
 	<?php
@@ -393,38 +392,6 @@ if($AACSB){
 	?>
 	<h2>Publikasjoner</h2>
 	<p>
-<!-- <table>
-<tr>
-	<th>Tittel</th>
-	<th>Årstall</th>
-	<th>Type</th>
-	<th>Forfattere</th>
-</tr>
-<?php
-// foreach($obj as $i){
-	
-// 	if($i["year_published"] >= $year and $i["year_published"] <= $_GET['before_year'] and ($i["category"]["code"] == "ARTICLE" or $i["category"]["code"] == "ACADEMICREVIEW" or $i["category"]["code"] == "CHAPTERACADEMIC" )){
-// 		echo "<tr>";
-// 		echo "<td>";
-// 		echo $i["title"][$i["original_language"]];
-// 		echo "</td>";
-// 		echo "<td>";
-// 		echo $i["year_published"];
-// 		echo "</td>";
-// 		echo "<td>";
-// 		echo $i["category"]["name"]["en"];
-// 		echo "</td>";
-// 		echo "<td>";
-// 		echo "<ol>";
-// 		foreach( $i["contributors"]["preview"] as $j){
-// 			echo "<li>". $j["surname"] .", ". $j["first_name"] ."</li>";
-// 		}
-// 		echo "</ol>";
-// 		echo "</td>";
-// 	}
-// }
-?>
-</table> -->
 <table>
 <tr>
 	<th>Tittel</th>
