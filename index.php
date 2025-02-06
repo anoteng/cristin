@@ -43,11 +43,11 @@
         <br><br>
 
         <label for="after_year">Fra og med år:</label><br>
-        <input type="number" id="after_year" name="after_year" min="1900" max="<?php echo date('Y'); ?>" default="2018">
+        <input type="number" id="after_year" name="after_year" min="1900" max="<?php echo date('Y'); ?>" default=2018>
         <br><br>
 
         <label for="aacsb">Ta med oppsummering av ICs for AACSB:</label>
-        <input type="checkbox" id="aacsb" name="aacsb" value="1">
+        <input type="checkbox" id="aacsb" name="aacsb" value="TRUE">
         <br><br>
 
         <button type="submit">Søk</button>
