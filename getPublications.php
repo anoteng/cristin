@@ -32,8 +32,10 @@ table, th, td {
 	<p>
 		<a href="index.php">Tilbake til søkesiden</a>
 	</p>
+	<p>
 	<h1><?php echo $_GET["name"]; ?></h1>
-	
+	<a href="https://app.cristin.no/persons/show.jsf?id=<?php echo $_GET["id"]; ?>" target="_blank">Cristin-profil</a> (åpner i ny fane)
+	</p>
 	<?php
 if($AACSB){
 	$article = 0;
