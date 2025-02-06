@@ -410,7 +410,7 @@ foreach($obj as $i){
 	  ($i["category"]["code"] == "ARTICLE" || 
 	   $i["category"]["code"] == "ACADEMICREVIEW" || 
 	   $i["category"]["code"] == "CHAPTERACADEMIC" ||
-	   $i["category"]["code"] == "ARTICLEJOURNAL" ||)){
+	   $i["category"]["code"] == "ARTICLEJOURNAL" )){
 
 		echo "<tr>";
 
