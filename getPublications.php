@@ -28,7 +28,8 @@ table, th, td {
 </style>
 </head>
 <body>
-	<H1>Poblikasjone rog andre ICs siden <?php echo $year; ?></H1>
+	<h1>
+	<H2>Poblikasjoner og andre ICs siden <?php echo $year; ?></H2>
 	<p>
 	<?php
 if($AACSB){
@@ -361,7 +362,7 @@ if($AACSB){
 	<?php
 }
 	?>
-	<h1>Publikasjonspoenggivende publikasjoner</h1>
+	<h1>Poenggivende publikasjoner</h1>
 	<p>
 <table>
 <tr>
@@ -376,11 +377,6 @@ foreach($obj as $i){
 	if($i["year_published"] >= $year and ($i["category"]["code"] == "ARTICLE" or $i["category"]["code"] == "ACADEMICREVIEW" or $i["category"]["code"] == "CHAPTERACADEMIC" )){
 		echo "<tr>";
 		echo "<td>";
-#		if(empty($i["title"]["en"])){
-#			echo $i["title"]["nb"];
-#		}else{
-#			echo $i["title"]["en"];
-#		}
 		echo $i["title"][$i["original_language"]];
 		echo "</td>";
 		echo "<td>";
