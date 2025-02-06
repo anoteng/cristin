@@ -55,24 +55,31 @@
 
     <script>
         $(document).ready(function() {
+            let typingTimer;
+            const typingInterval = 500; // 500 ms forsinkelse etter skriving
+
             $('#name').on('input', function() {
+                clearTimeout(typingTimer);
                 let query = $(this).val();
                 if (query.length > 2) {
-                    $.ajax({
-                        url: 'https://api.cristin.no/v2/persons',
-                        method: 'GET',
-                        data: { name: query },
-                        success: function(data) {
-                            $('#search-results').empty();
-                            if (data.length > 0) {
-                                data.forEach(person => {
-                                    $('#search-results').append('<div data-id="' + person.cristin_person_id + '">' + person.full_name + '</div>');
-                                });
-                            } else {
-                                $('#search-results').append('<div>Ingen resultater</div>');
+                    typingTimer = setTimeout(function() {
+                        $.ajax({
+                            url: 'https://api.cristin.no/v2/persons',
+                            method: 'GET',
+                            data: { name: query },
+                            success: function(data) {
+                                $('#search-results').empty();
+                                if (data.length > 0) {
+                                    data.forEach(person => {
+                                        const fullName = person.first_name + ' ' + person.surname;
+                                        $('#search-results').append('<div data-id="' + person.cristin_person_id + '">' + fullName + '</div>');
+                                    });
+                                } else {
+                                    $('#search-results').append('<div>Ingen resultater</div>');
+                                }
                             }
-                        }
-                    });
+                        });
+                    }, typingInterval);
                 } else {
                     $('#search-results').empty();
                 }
