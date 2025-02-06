@@ -36,6 +36,23 @@ table, th, td {
 	<h1><?php echo $_GET["name"]; ?></h1>
 	<a href="https://app.cristin.no/persons/show.jsf?id=<?php echo $_GET["id"]; ?>" target="_blank">Cristin-profil</a> (åpner i ny fane)
 	</p>
+	<p>
+		<?php
+	$nvi_count = 0;
+
+foreach ($results as $result) {
+    if (isset($result['journal']['publisher']['nvi_level'])) {
+        $nvi_level = $result['journal']['publisher']['nvi_level'];
+        if ($nvi_level == '1' || $nvi_level == '2') {
+            $nvi_count++;
+        }
+    }
+}
+
+// Skriv ut antall publikasjoner med nvi_level 1 eller 2
+echo "Antall publikasjoner med NVI-nivå 1 eller 2: " . $nvi_count;
+?>
+</p>
 	<?php
 if($AACSB){
 	$article = 0;
