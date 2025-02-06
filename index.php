@@ -39,11 +39,11 @@
         <br><br>
 
         <label for="cristin_id">Cristin-ID:</label><br>
-        <input type="text" id="cristin_id" name="cristin_id">
+        <input type="text" id="cristin_id" name="id">
         <br><br>
 
         <label for="after_year">Fra og med år:</label><br>
-        <input type="number" id="after_year" name="after_year" min="1900" max="<?php echo date('Y'); ?>">
+        <input type="number" id="after_year" name="after_year" min="1900" max="<?php echo date('Y'); ?>" default="2018">
         <br><br>
 
         <label for="aacsb">Ta med oppsummering av ICs for AACSB:</label>
