@@ -135,7 +135,7 @@ if($AACSB){
 				case "OTHER":
 					$other = $other + 1;
 					break;
-				case "ACADEMICLEC":
+				case "ACADEMICLECTURE":
 					$academiclecture = $academiclecture + 1;
 					break;
 				case "POPULARBOOK":
