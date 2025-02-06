@@ -40,7 +40,7 @@ table, th, td {
 		<?php
 	$nvi_count = 0;
 
-foreach ($result as $j) {
+foreach ($obj as $j) {
     if (isset($j['journal']['publisher']['nvi_level'])) {
         $nvi_level = $j['journal']['publisher']['nvi_level'];
         if ($nvi_level == '1' || $nvi_level == '2') {
