@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 $url = "https://api.cristin.no/v2/persons/". $_GET["id"] ."/results";
 $year = $_GET["after_year"];
+$before_year = $_GET["before_year"];
 if(isset($_GET['AACSB'])){
 	$AACSB = $_GET['AACSB'];
 }else{
@@ -40,14 +41,18 @@ table, th, td {
 		<?php
 	$nvi_count = 0;
 
-foreach ($obj as $j) {
-    if (isset($j['journal']['publisher']['nvi_level'])) {
-        $nvi_level = $j['journal']['publisher']['nvi_level'];
-        if ($nvi_level == '1' || $nvi_level == '2') {
-            $nvi_count++;
-        }
-    }
-}
+	foreach ($obj as $result) {
+		$year_published = isset($result['year_published']) ? intval($result['year_published']) : 0;
+	
+		if ($year_published >= $after_year && $year_published <= $before_year) {
+			if (isset($result['journal']['publisher']['nvi_level'])) {
+				$nvi_level = $result['journal']['publisher']['nvi_level'];
+				if ($nvi_level == '1' || $nvi_level == '2') {
+					$nvi_count++;
+				}
+			}
+		}
+	}
 
 // Skriv ut antall publikasjoner med nvi_level 1 eller 2
 echo "Antall publikasjoner med NVI-nivå 1 eller 2: " . $nvi_count;
