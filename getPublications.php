@@ -70,7 +70,7 @@ if($AACSB){
 	$chapter = 0;
 	$interview = 0;
 	foreach($obj as $i){
-		if($i["year_published"] >= $year){
+		if($i["year_published"] >= $year && $i["year_published"] <= $_GET["before_year"]){
 			switch($i["category"]["code"]){
 				case "ARTICLE":
 					$article = $article + 1;
@@ -381,7 +381,7 @@ if($AACSB){
 <?php
 foreach($obj as $i){
 	
-	if($i["year_published"] >= $year and ($i["category"]["code"] == "ARTICLE" or $i["category"]["code"] == "ACADEMICREVIEW" or $i["category"]["code"] == "CHAPTERACADEMIC" )){
+	if($i["year_published"] >= $year and $i["year_published"] <= $_GET['before_year'] and ($i["category"]["code"] == "ARTICLE" or $i["category"]["code"] == "ACADEMICREVIEW" or $i["category"]["code"] == "CHAPTERACADEMIC" )){
 		echo "<tr>";
 		echo "<td>";
 		echo $i["title"][$i["original_language"]];
