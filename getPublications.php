@@ -409,7 +409,8 @@ foreach($obj as $i){
 	if($year_published >= $after_year && $year_published <= $before_year && 
 	  ($i["category"]["code"] == "ARTICLE" || 
 	   $i["category"]["code"] == "ACADEMICREVIEW" || 
-	   $i["category"]["code"] == "CHAPTERACADEMIC" )){
+	   $i["category"]["code"] == "CHAPTERACADEMIC" ||
+	   $i["category"]["code"] == "ARTICLEJOURNAL" ||)){
 
 		echo "<tr>";
 
