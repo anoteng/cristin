@@ -29,7 +29,10 @@ table, th, td {
 <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-	<h1>
+	<p>
+		<a href="index.php">Tilbake til søkesiden</a>
+	</p>
+	<h1><?php echo $_GET["name"]; ?></h1>
 	
 	<?php
 if($AACSB){
