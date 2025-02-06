@@ -406,8 +406,12 @@ foreach($obj as $i){
 	$after_year = isset($_GET['after_year']) ? intval($_GET['after_year']) : 0;
 	$before_year = isset($_GET['before_year']) ? intval($_GET['before_year']) : date('Y');
 
+	// Sjekk om publikasjonen har et NVI-nivå
+    $has_nvi_level = isset($i["journal"]["publisher"]["nvi_level"]);
+
 	if($year_published >= $after_year && $year_published <= $before_year && 
-	  ($i["category"]["code"] == "ARTICLE" || 
+	  ($has_nvi_level ||
+	   $i["category"]["code"] == "ARTICLE" || 
 	   $i["category"]["code"] == "ACADEMICREVIEW" || 
 	   $i["category"]["code"] == "CHAPTERACADEMIC" ||
 	   $i["category"]["code"] == "ARTICLEJOURNAL" )){
