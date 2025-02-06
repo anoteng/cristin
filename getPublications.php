@@ -364,7 +364,7 @@ if($AACSB){
 	<?php
 }
 	?>
-	<h1>Poenggivende publikasjoner</h1>
+	<h2>Poenggivende publikasjoner</h2>
 	<p>
 <table>
 <tr>
