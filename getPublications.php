@@ -26,11 +26,11 @@ table, th, td {
   border: 1px solid;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 	<h1>
-	<H2>Poblikasjoner og andre ICs siden <?php echo $year; ?></H2>
-	<p>
+	
 	<?php
 if($AACSB){
 	$article = 0;
@@ -164,6 +164,8 @@ if($AACSB){
 		}
 	}
 	?>
+	<H2>Publikasjoner og andre ICs siden <?php echo $year; ?></H2>
+	<p>
 	<table>
 	<tr>
 		<?php
