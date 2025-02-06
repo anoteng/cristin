@@ -28,6 +28,8 @@ table, th, td {
 </style>
 </head>
 <body>
+	<H1>Poblikasjone rog andre ICs siden <?php echo $year; ?></H1>
+	<p>
 	<?php
 if($AACSB){
 	$article = 0;
@@ -355,9 +357,12 @@ if($AACSB){
 		}?>
 	</tr>
 	</table>
+	</p>
 	<?php
 }
 	?>
+	<h1>Publikasjonspoenggivende publikasjoner</h1>
+	<p>
 <table>
 <tr>
 	<th>Tittel</th>
@@ -394,5 +399,7 @@ foreach($obj as $i){
 	}
 }
 ?>
+</table>
+</p>
 </body>
 </html>
