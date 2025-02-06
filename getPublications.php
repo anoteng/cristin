@@ -77,6 +77,7 @@ if($AACSB){
 	$mediainterview = 0;
 	$documentary = 0;
 	$programmanage = 0;
+	$programparticip = 0;
 	$chapteracademic = 0;
 	$lexicalimport = 0;
 	$other = 0;
@@ -146,6 +147,9 @@ if($AACSB){
 					break;
 				case "PROGRAMMANAGE":
 					$programmanage = $programmanage + 1;
+					break;
+				case "PROGRAMPARTICIP":
+					$programparticip = $programparticip + 1;
 					break;
 				case "CHAPTERACADEMIC":
 					$chapteracademic = $chapteracademic + 1;
@@ -249,6 +253,9 @@ if($AACSB){
 		if($programmanage > 0){
 			echo "<th>Programledelse</th>";
 		}
+		if($programparticip > 0){
+			echo "<th>Programdeltagelse</th>";
+		}
 		if($chapteracademic > 0){
 			echo "<th>Vitenskapelig kapittel</th>";
 		}
@@ -344,6 +351,9 @@ if($AACSB){
 		}
 		if($programmanage > 0){
 			echo "<td>". $programmanage ."</td>";
+		}
+		if($programparticip > 0){
+			echo "<td>". $programparticip ."</td>";
 		}
 		if($chapteracademic > 0){
 			echo "<td>". $chapteracademic ."</td>";
