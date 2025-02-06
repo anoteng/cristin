@@ -391,9 +391,9 @@ if($AACSB){
 	<?php
 }
 	?>
-	<h2>Poenggivende publikasjoner</h2>
+	<h2>Publikasjoner</h2>
 	<p>
-<table>
+<!-- <table>
 <tr>
 	<th>Tittel</th>
 	<th>Årstall</th>
@@ -401,26 +401,77 @@ if($AACSB){
 	<th>Forfattere</th>
 </tr>
 <?php
-foreach($obj as $i){
+// foreach($obj as $i){
 	
-	if($i["year_published"] >= $year and $i["year_published"] <= $_GET['before_year'] and ($i["category"]["code"] == "ARTICLE" or $i["category"]["code"] == "ACADEMICREVIEW" or $i["category"]["code"] == "CHAPTERACADEMIC" )){
+// 	if($i["year_published"] >= $year and $i["year_published"] <= $_GET['before_year'] and ($i["category"]["code"] == "ARTICLE" or $i["category"]["code"] == "ACADEMICREVIEW" or $i["category"]["code"] == "CHAPTERACADEMIC" )){
+// 		echo "<tr>";
+// 		echo "<td>";
+// 		echo $i["title"][$i["original_language"]];
+// 		echo "</td>";
+// 		echo "<td>";
+// 		echo $i["year_published"];
+// 		echo "</td>";
+// 		echo "<td>";
+// 		echo $i["category"]["name"]["en"];
+// 		echo "</td>";
+// 		echo "<td>";
+// 		echo "<ol>";
+// 		foreach( $i["contributors"]["preview"] as $j){
+// 			echo "<li>". $j["surname"] .", ". $j["first_name"] ."</li>";
+// 		}
+// 		echo "</ol>";
+// 		echo "</td>";
+// 	}
+// }
+?>
+</table> -->
+<table>
+<tr>
+	<th>Tittel</th>
+	<th>Årstall</th>
+	<th>Type</th>
+	<th>Forfattere</th>
+	<th>NVI-nivå</th>
+</tr>
+<?php
+foreach($obj as $i){
+	$year_published = isset($i["year_published"]) ? intval($i["year_published"]) : 0;
+	$after_year = isset($_GET['after_year']) ? intval($_GET['after_year']) : 0;
+	$before_year = isset($_GET['before_year']) ? intval($_GET['before_year']) : date('Y');
+
+	if($year_published >= $after_year && $year_published <= $before_year && 
+	  ($i["category"]["code"] == "ARTICLE" || 
+	   $i["category"]["code"] == "ACADEMICREVIEW" || 
+	   $i["category"]["code"] == "CHAPTERACADEMIC" )){
+
 		echo "<tr>";
+
 		echo "<td>";
-		echo $i["title"][$i["original_language"]];
+		echo htmlspecialchars($i["title"][$i["original_language"]]);
 		echo "</td>";
+
 		echo "<td>";
-		echo $i["year_published"];
+		echo htmlspecialchars($i["year_published"]);
 		echo "</td>";
+
 		echo "<td>";
-		echo $i["category"]["name"]["en"];
+		echo htmlspecialchars($i["category"]["name"]["en"]);
 		echo "</td>";
+
 		echo "<td>";
 		echo "<ol>";
-		foreach( $i["contributors"]["preview"] as $j){
-			echo "<li>". $j["surname"] .", ". $j["first_name"] ."</li>";
+		foreach($i["contributors"]["preview"] as $j){
+			echo "<li>" . htmlspecialchars($j["surname"]) . ", " . htmlspecialchars($j["first_name"]) . "</li>";
 		}
 		echo "</ol>";
 		echo "</td>";
+
+		// Legger til NVI-nivå hvis det finnes
+		echo "<td>";
+		echo isset($i["journal"]["publisher"]["nvi_level"]) ? htmlspecialchars($i["journal"]["publisher"]["nvi_level"]) : "-";
+		echo "</td>";
+
+		echo "</tr>";
 	}
 }
 ?>
