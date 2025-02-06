@@ -44,7 +44,7 @@ table, th, td {
 	foreach ($obj as $result) {
 		$year_published = isset($result['year_published']) ? intval($result['year_published']) : 0;
 	
-		if ($year_published >= $after_year && $year_published <= $before_year) {
+		if ($year_published >= $year && $year_published <= $before_year) {
 			if (isset($result['journal']['publisher']['nvi_level'])) {
 				$nvi_level = $result['journal']['publisher']['nvi_level'];
 				if ($nvi_level == '1' || $nvi_level == '2') {
